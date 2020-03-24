@@ -3,15 +3,15 @@
 Genetic algorithm to solve the Travelling Salesman Problem (TSP).
 
 <p align="center">
-    <img width="500" height="400" src="figures/cities.jpg">
+    <img width="500" height="400" src="images/cities.jpg">
 </p>
 
 <p align="center">
-    <img width="500" height="400" src="figures/convergence.jpg">
+    <img width="500" height="400" src="images/convergence.jpg">
 </p>
 
 <p align="center">
-    <img width="500" height="400" src="figures/best_path.jpg">
+    <img width="500" height="400" src="images/best_path.jpg">
 </p>
 
 

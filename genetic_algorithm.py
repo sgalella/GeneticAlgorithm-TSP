@@ -174,7 +174,7 @@ class GeneticAlgorithm():
         plt.ylabel('fitness')
         plt.title('Fitness convergence')
         plt.grid(alpha=0.3)
-        plt.savefig('figures/convergence.jpg')
+        plt.savefig('images/convergence.jpg')
         plt.show()
 
         best_individual = population[0]

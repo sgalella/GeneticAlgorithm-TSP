@@ -28,7 +28,7 @@ plt.title('Cities location')
 plt.xlim([0, map_size])
 plt.ylim([0, map_size])
 plt.grid(alpha=0.3)
-plt.savefig('figures/cities.jpg')
+plt.savefig('images/cities.jpg')
 plt.show()
 
 # Algorithm settings
@@ -62,5 +62,5 @@ plt.text(x1, y1, best_path[-1])
 x0, y0 = loc_cities[best_path[-1]]
 x1, y1 = loc_cities[best_path[0]]
 plt.plot([x0, x1], [y0, y1], 'ro-')
-plt.savefig('figures/best_path.jpg')
+plt.savefig('images/best_path.jpg')
 plt.show()
