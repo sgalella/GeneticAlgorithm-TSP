@@ -57,5 +57,10 @@ for i in range(1, len(best_path)):
     plt.text(x0 + 1, y0 + 1, best_path[i - 1])
     plt.plot([x0, x1], [y0, y1], 'ro-')
 plt.text(x1, y1, best_path[-1])
+
+# Complete the tour
+x0, y0 = loc_cities[best_path[-1]]
+x1, y1 = loc_cities[best_path[0]]
+plt.plot([x0, x1], [y0, y1], 'ro-')
 plt.savefig('figures/best_path.jpg')
 plt.show()

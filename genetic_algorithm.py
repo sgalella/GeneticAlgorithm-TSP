@@ -67,6 +67,8 @@ class GeneticAlgorithm():
                 for i in range(1, self.N - 1):
                     fitness_individual += ((self.loc_cities[individual[i]][0] - self.loc_cities[individual[i - 1]][0])**2
                                            + (self.loc_cities[individual[i]][1] - self.loc_cities[individual[i - 1]][1])**2)**0.5
+                fitness_individual += ((self.loc_cities[individual[-1]][0] - self.loc_cities[individual[0]][0])**2
+                                       + (self.loc_cities[individual[-1]][1] - self.loc_cities[individual[0]][1])**2)**0.5
             else:
                 fitness_individual = np.inf
             fitness_population[idx] = fitness_individual
