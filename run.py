@@ -6,6 +6,7 @@ from genetic_algorithm import GeneticAlgorithm
 seed = 1234
 np.random.seed(seed)
 
+# Initialize cities
 num_cities = 15
 map_size = 100
 loc_cities = []
@@ -40,7 +41,19 @@ num_mutated = 25
 
 # Initialize algorithm
 genetic = GeneticAlgorithm(loc_cities, num_iterations, num_selected, num_children, num_immigrants, num_mutated)
-best_path = genetic.run()
+best_path, max_fitness, mean_fitness = genetic.run()
+
+# Plot algorithm convergence
+fig = plt.figure()
+plt.plot(range(len(mean_fitness)), mean_fitness, 'b')
+plt.plot(range(len(max_fitness)), max_fitness, 'r--')
+plt.legend(("mean fitness", "max fitness"))
+plt.xlabel('iterations')
+plt.ylabel('fitness')
+plt.title('Fitness convergence')
+plt.grid(alpha=0.3)
+plt.savefig('images/convergence.jpg')
+plt.show()
 
 # Plot best path
 fig = plt.figure()

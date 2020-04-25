@@ -1,8 +1,8 @@
 import numpy as np
-import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 
-class GeneticAlgorithm():
+class GeneticAlgorithm:
     """
     Genetic algorithm for TSP.
     """
@@ -71,7 +71,7 @@ class GeneticAlgorithm():
                                        + (self.loc_cities[individual[-1]][1] - self.loc_cities[individual[0]][1])**2)**0.5
             else:
                 fitness_individual = np.inf
-            fitness_population[idx] = fitness_individual
+            fitness_population[idx] = 4 * max(max(self.loc_cities)) / fitness_individual
 
         return fitness_population.flatten()
 
@@ -123,7 +123,7 @@ class GeneticAlgorithm():
         next_population = np.array([np.zeros([self.N, ], dtype=int) for _ in range(self.population_size)])
 
         # Select best individuals
-        best_individuals = np.argsort(fitness)
+        best_individuals = np.argsort(fitness)[::-1]
 
         for individual in range(self.num_selected):
             next_population[individual] = population[best_individuals[individual]]
@@ -146,7 +146,7 @@ class GeneticAlgorithm():
 
         return next_population
 
-    def run(self, iter_info=10):
+    def run(self):
         """
         Runs the algorithm.
 
@@ -159,24 +159,14 @@ class GeneticAlgorithm():
         # Initialize first population
         population = self.random_population(self.population_size)
 
-        fitness_all = []
+        # Initialize fitness variables
+        mean_fitness = []
+        max_fitness = []
 
-        for iteration in range(self.num_iterations):
+        for iteration in tqdm(range(self.num_iterations), ncols=75):
             fitness = self.compute_fitness(population)
-            fitness_all.append(min(fitness))
             population = self.next_population(population, fitness)
-            if iteration % iter_info == 0:
-                print(f"Iteration: {iteration} Best fitness: {fitness_all[-1]}")
+            max_fitness.append(np.max(fitness))
+            mean_fitness.append(np.mean(fitness))
 
-        plt.figure()
-        plt.plot(range(len(fitness_all)), fitness_all, 'b')
-        plt.xlabel('iterations')
-        plt.ylabel('fitness')
-        plt.title('Fitness convergence')
-        plt.grid(alpha=0.3)
-        plt.savefig('images/convergence.jpg')
-        plt.show()
-
-        best_individual = population[0]
-
-        return best_individual
+        return population[0], max_fitness, mean_fitness
