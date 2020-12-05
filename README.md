@@ -32,5 +32,5 @@ pip install -r requirements.txt
 Run the menu with the following command:
 
 ```python
-python run.py
+python genetic_TSP 
 ```
