@@ -41,8 +41,8 @@ num_immigrants = 25
 num_mutated = 25
 
 # Initialize algorithm
-genetic = GeneticAlgorithm(loc_cities, num_iterations, num_selected, num_children, num_immigrants, num_mutated)
-best_path, max_fitness, mean_fitness = genetic.run()
+genetic = GeneticAlgorithm(loc_cities, num_selected, num_children, num_immigrants, num_mutated)
+best_path, max_fitness, mean_fitness = genetic.run(num_iterations)
 
 # Plot algorithm convergence
 fig = plt.figure()

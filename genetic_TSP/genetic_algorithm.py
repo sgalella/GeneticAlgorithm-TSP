@@ -6,13 +6,12 @@ class GeneticAlgorithm:
     """
     Genetic algorithm for TSP.
     """
-    def __init__(self, loc_cities, num_iterations, num_selected, num_children, num_immigrants, num_mutated):
+    def __init__(self, loc_cities, num_selected, num_children, num_immigrants, num_mutated):
         """
         Initializes the algorithm.
         """
         self.loc_cities = loc_cities
         self.N = len(self.loc_cities)
-        self.num_iterations = num_iterations
         self.num_selected = num_selected
         self.num_children = num_children
         self.num_immigrants = num_immigrants
@@ -23,8 +22,7 @@ class GeneticAlgorithm:
         """
         Visualizes algorithm parameters when printing.
         """
-        return (f"Iterations: {self.num_iterations}\n"
-                f"Population size: {self.population_size}\n"
+        return (f"Population size: {self.population_size}\n"
                 f"Num selected: {self.num_selected}\n"
                 f"Num children: {self.num_children}\n"
                 f"Num immigrants: {self.num_immigrants}\n"
@@ -146,7 +144,7 @@ class GeneticAlgorithm:
 
         return next_population
 
-    def run(self):
+    def run(self, num_iterations=100):
         """
         Runs the algorithm.
 
@@ -163,7 +161,7 @@ class GeneticAlgorithm:
         mean_fitness = []
         max_fitness = []
 
-        for iteration in tqdm(range(self.num_iterations), ncols=75):
+        for iteration in tqdm(range(num_iterations), ncols=75):
             fitness = self.compute_fitness(population)
             population = self.next_population(population, fitness)
             max_fitness.append(np.max(fitness))
