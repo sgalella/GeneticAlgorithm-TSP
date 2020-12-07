@@ -31,7 +31,7 @@ plt.xlim([0, map_size])
 plt.ylim([0, map_size])
 plt.grid(alpha=0.3)
 plt.savefig('images/cities.png')
-plt.show()
+plt.draw()
 
 # Algorithm settings
 num_iterations = 200
@@ -54,7 +54,7 @@ plt.ylabel('fitness')
 plt.title('Fitness convergence')
 plt.grid(alpha=0.3)
 plt.savefig('images/convergence.png')
-plt.show()
+plt.draw()
 
 # Plot best path
 fig = plt.figure()
