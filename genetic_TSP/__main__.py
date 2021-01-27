@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from genetic_algorithm import GeneticAlgorithm
+from .genetic_algorithm import GeneticAlgorithm
 
 
 # Set rng for reproducibility
