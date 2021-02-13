@@ -43,5 +43,5 @@ conda activate genetic-TSP
 Run the menu with the following command:
 
 ```python
-python genetic_TSP 
+python -m genetic_TSP 
 ```
